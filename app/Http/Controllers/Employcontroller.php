@@ -54,17 +54,20 @@ class Employcontroller extends Controller
 
 
 
-
-       $searach = DB::table('projects')->where('projects.id','=',4)
+       $search_val = $reques->get('project');
+       $search_val2 = $reques->get('department');
+       $search_val3 = $reques->get('company');
+       $searach = DB::table('projects')->where('projects.pro_name','like','%'.$search_val.'%')
            ->leftJoin('employe_projects','projects.id','=','employe_projects.projects_id')
            ->leftJoin('employes','employe_projects.employe_id','=','employes.id')
            ->rightJoin('departments','projects.dep_id','=','departments.id')
+           ->where('departments.dep_name','like','%'.$search_val2.'%')
            ->rightJoin('companies','departments.com_id','=','companies.id')
+           ->where('companies.com_nsme','like','%'.$search_val3.'%')
            ->select('projects.pro_name','employes.emp_name','employes.id','companies.com_nsme','departments.dep_name','employes.emp_address')
            ->get();
             return view('Display', ['searach'=>$searach]);
 
-            
-//       $search_val = $reques->get('company');
+            //$search_val = $reques->get('company');
    }
 }

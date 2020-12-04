@@ -69,8 +69,8 @@
                 <th scope="row">{{$emps->emp_name}}</th>
                 <td>{{$emps->id}}</td>
                 <td>{{$emps->emp_address}}</td>
-                <td>{{$emps->pro_name}}</td>
                 <td>{{$emps->com_nsme}}</td>
+                <td>{{$emps->pro_name}}</td>
                 <td>{{$emps->dep_name}}</td>
             </tr>
         @endforeach

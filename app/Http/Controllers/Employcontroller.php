@@ -16,7 +16,7 @@ use function GuzzleHttp\Promise\all;
 class Employcontroller extends Controller
 {
    public function insert(Request $request){
-      //dd($request->all());
+      dd($request->all());
        $employ = new Employe();
        $department = new Departments();
        $project = new Projects();
@@ -43,7 +43,7 @@ class Employcontroller extends Controller
        $employproject->projects_id=$proid;
        $employproject->save();
 
-     return view('welcome');
+     return view('Heder');
 
 
    }
@@ -66,6 +66,7 @@ class Employcontroller extends Controller
            ->orwhere('companies.com_nsme','like','%'.$search_val3.'%')
            ->select('projects.pro_name','employes.emp_name','employes.id','companies.com_nsme','departments.dep_name','employes.emp_address')
            ->get();
+           dd($searach);
             return view('Display', ['searach'=>$searach]);
 
             //$search_val = $reques->get('company');

@@ -1,4 +1,22 @@
-@extends('layouts.master')
+<!DOCTYPE html>
+
+<html >
+   
+    <head>
+    <link rel="stylesheet" href="{{asset('css/app.css')}}">
+    </head>
+    <title></title>
+    <body>
+        <div id="app">
+
+        </div>
+
+        <script src="{{asset('js/app.js')}}"></script>
+   
+    </body>
+</html>
+
+{{-- @extends('layouts.master')
 
 @section('title')
  Welcome!
@@ -43,7 +61,7 @@
 {{--                   <label for="department">Your Department</label>--}}
 {{--                   <input class="form-control" type="text" name="department" id="department">--}}
 {{--               </div>--}}
-               <div class="input-group mb-3">
+               {{-- <div class="input-group mb-3">
                    <div class="input-group-prepend">
                        <label class="input-group-text" for="company">Your department</label>
                    </div>
@@ -66,4 +84,4 @@
 @endsection
 
 
-
+  --}}

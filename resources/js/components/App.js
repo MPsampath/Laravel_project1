@@ -8,6 +8,8 @@ import {
 import ReactDom from 'react-dom';
 import Header from './Heder';
 import Footer from './Footer';
+import Form from './Form';
+import Searching from './Search';
 
 const App = ()=>
 {
@@ -16,7 +18,7 @@ const App = ()=>
         <div>
            
                 <Header/>
-
+                
                 <Footer/>
            
             

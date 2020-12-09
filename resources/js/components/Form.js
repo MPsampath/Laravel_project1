@@ -4,14 +4,14 @@ import axios from 'axios';
 
 
 
-class Form extends Component
+export default class Form extends Component
 {
-constructor()
+constructor(props)
 {
     
-    super()
-    this.onaddDetails = this.onaddDetails.bind(this);
-    this.onSubmit = this.onSubmit.bind(this)
+    super(props);
+   // this.onSubmit = this.setDetails.bind(this);
+    this.onaddDetails = this.handleSubmit.bind(this);
     this.state =  
     {
         name:'',
@@ -24,19 +24,19 @@ constructor()
     }  
 }
 
-    onaddDetails()
-    {
-        this.setState({
-            name:target.value,
-            address:target.value,
-            company:target.value,
-            department:target.value,
-            project:target.value
-        });
-    }
+    // setDetails(e)
+    // {
+    //     this.setState({
+    //         name:e.target.value,
+    //         address:e.target.value,
+    //         company:e.target.value,
+    //         department:e.target.value,
+    //         project:e.target.value
+    //     });
+    // }
 
-    onSubmit(){
-        preventDefult();
+    handleSubmit(e){
+       e.preventDefult();
         const details ={
             name : this.state.name,
             address : this.state.address,
@@ -46,7 +46,9 @@ constructor()
         }
 
         axios.post('http://127.0.0.1:8000/api/saveEmploy',details)
-        .then(res=>console.log(res.data));
+        .then(response=>
+            console.log( "data is submit",response));
+        console.log(details);
     }
     
     render(){
@@ -55,7 +57,7 @@ constructor()
 
         <header>
     <div className = "logo">
-        <form onSubmit={this.onSubmit}>
+        <form onSubmit={this.handleSubmit}>
       
                 <div className="form-group">
                    <label htmlFor="name">Your Name </label>
@@ -104,5 +106,5 @@ constructor()
 }
 };
 
-export default Form;
+//export default Form;
   

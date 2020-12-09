@@ -10,6 +10,7 @@ class Employe extends Model
 {
     protected $table = 'employes';
     protected $primaryKey = 'id';
+    protected $fillable = ['emp_name','emp_address'];
     public $incrementing = false;
 
     // public function projec(){

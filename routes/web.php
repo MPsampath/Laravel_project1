@@ -17,7 +17,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::post('/saveEmploy', 'App\Http\Controllers\Employcontroller@insert');
+//Route::post('/saveEmploy', 'App\Http\Controllers\Employcontroller@insert');
 
 //Route::get('/search','App\Http\Controllers\Employcontroller@index');
 // Route::get('');

@@ -70905,6 +70905,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _Heder__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Heder */ "./resources/js/components/Heder.js");
 /* harmony import */ var _Footer__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Footer */ "./resources/js/components/Footer.js");
+/* harmony import */ var _Form__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Form */ "./resources/js/components/Form.js");
+/* harmony import */ var _Search__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./Search */ "./resources/js/components/Search.js");
+
+
 
 
 
@@ -70995,6 +70999,7 @@ var Footer = /*#__PURE__*/function (_Component) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Form; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _css_app_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../css/app.css */ "./resources/js/css/app.css");
@@ -71032,14 +71037,14 @@ var Form = /*#__PURE__*/function (_Component) {
 
   var _super = _createSuper(Form);
 
-  function Form() {
+  function Form(props) {
     var _this;
 
     _classCallCheck(this, Form);
 
-    _this = _super.call(this);
-    _this.onaddDetails = _this.onaddDetails.bind(_assertThisInitialized(_this));
-    _this.onSubmit = _this.onSubmit.bind(_assertThisInitialized(_this));
+    _this = _super.call(this, props); // this.onSubmit = this.setDetails.bind(this);
+
+    _this.onaddDetails = _this.handleSubmit.bind(_assertThisInitialized(_this));
     _this.state = {
       name: '',
       address: '',
@@ -71048,23 +71053,22 @@ var Form = /*#__PURE__*/function (_Component) {
       project: ''
     };
     return _this;
-  }
+  } // setDetails(e)
+  // {
+  //     this.setState({
+  //         name:e.target.value,
+  //         address:e.target.value,
+  //         company:e.target.value,
+  //         department:e.target.value,
+  //         project:e.target.value
+  //     });
+  // }
+
 
   _createClass(Form, [{
-    key: "onaddDetails",
-    value: function onaddDetails() {
-      this.setState({
-        name: target.value,
-        address: target.value,
-        company: target.value,
-        department: target.value,
-        project: target.value
-      });
-    }
-  }, {
-    key: "onSubmit",
-    value: function onSubmit() {
-      preventDefult();
+    key: "handleSubmit",
+    value: function handleSubmit(e) {
+      e.preventDefult();
       var details = {
         name: this.state.name,
         address: this.state.address,
@@ -71072,9 +71076,10 @@ var Form = /*#__PURE__*/function (_Component) {
         department: this.state.department,
         project: this.state.project
       };
-      axios__WEBPACK_IMPORTED_MODULE_2___default.a.post('http://127.0.0.1:8000/api/saveEmploy', details).then(function (res) {
-        return console.log(res.data);
+      axios__WEBPACK_IMPORTED_MODULE_2___default.a.post('http://127.0.0.1:8000/api/saveEmploy', details).then(function (response) {
+        return console.log("data is submit", response);
       });
+      console.log(details);
     }
   }, {
     key: "render",
@@ -71082,7 +71087,7 @@ var Form = /*#__PURE__*/function (_Component) {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("header", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "logo"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
-        onSubmit: this.onSubmit
+        onSubmit: this.handleSubmit
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "form-group"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
@@ -71147,8 +71152,8 @@ var Form = /*#__PURE__*/function (_Component) {
   return Form;
 }(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
 
-;
-/* harmony default export */ __webpack_exports__["default"] = (Form);
+
+; //export default Form;
 
 /***/ }),
 
@@ -71236,14 +71241,14 @@ var Header = /*#__PURE__*/function (_Component) {
         className: "nav-item"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
         className: "nav-link",
-        to: "/search"
+        to: "/sea"
       }, "Search")))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
         exact: true,
         path: "/",
         component: _Form__WEBPACK_IMPORTED_MODULE_3__["default"]
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
         exact: true,
-        path: "/search",
+        path: "/sea",
         component: _Search__WEBPACK_IMPORTED_MODULE_4__["default"]
       }));
     }
@@ -71266,13 +71271,14 @@ var Header = /*#__PURE__*/function (_Component) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Searching; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _css_app_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../css/app.css */ "./resources/js/css/app.css");
 /* harmony import */ var _css_app_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_css_app_css__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_3__);
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -71299,24 +71305,23 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 
 
+
 var Searching = /*#__PURE__*/function (_Component) {
   _inherits(Searching, _Component);
 
   var _super = _createSuper(Searching);
 
-  function Searching() {
+  function Searching(props) {
     var _this;
 
     _classCallCheck(this, Searching);
 
-    _this = _super.call(this);
-    _this.onaddDetails = _this.onaddDetails.bind(_assertThisInitialized(_this));
-    _this.componentDidMount = _this.componentDidMount.bind(_assertThisInitialized(_this));
+    _this = _super.call(this, props); //this.onaddDetails = this.onaddDetails.bind(this);
+    //this.componentDidMount = this.componentDidMount.bind(this);
+
     _this.state = {
       search: [],
-      company: target.value,
-      department: target.value,
-      project: target.value
+      project: ''
     };
     return _this;
   }
@@ -71325,9 +71330,9 @@ var Searching = /*#__PURE__*/function (_Component) {
     key: "onaddDetails",
     value: function onaddDetails() {
       this.setState({
-        company: target.value,
-        department: target.value,
-        project: target.value
+        companys: target.value,
+        departments: target.value,
+        projects: target.value
       });
     }
   }, {
@@ -71335,66 +71340,47 @@ var Searching = /*#__PURE__*/function (_Component) {
     value: function componentDidMount() {
       var _this2 = this;
 
-      var details = {
-        company: this.state.company,
-        department: this.state.department,
-        project: this.state.project
-      };
-      axios__WEBPACK_IMPORTED_MODULE_2___default.a.get('http://127.0.0.1:8000/api/search', details).then(function (response) {
+      fetch('http://127.0.0.1:8000/api/search').then(function (res) {
+        return res.json();
+      }).then(function (result) {
         _this2.setState({
-          search: response.data
+          search: result
         });
-
-        console.log(response);
-      });
+      }); // const details ={
+      //     company : this.state.companys,
+      //     department : this.state.departments,
+      //     project:this.state.projects
+      // }
+      // axios.get('http://127.0.0.1:8000/api/search',details)
+      // .then(response=>
+      //     {
+      //         this.setState({search:response.data});
+      //         //console.log(response);
+      //     });
     }
   }, {
     key: "render",
     value: function render() {
+      var search = this.state.search;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "search_forme"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         className: "searching_emp",
-        onSubmit: this.onSubmitserch,
         method: "get"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Company"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Project"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
         className: "custom-select",
-        name: "project",
-        id: "project"
+        name: "projects",
+        id: "projects"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
         defaultValue: "non"
       }, "Choose..."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Company 1"
-      }, "Company 1"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Company 2"
-      }, "Company 2"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Company 3"
-      }, "Company 3"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Department"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
-        className: "custom-select",
-        name: "project",
-        id: "project"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        defaultValue: "non"
-      }, "Choose..."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Department 1"
-      }, "Department 1"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Department 2"
-      }, "Department 2"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Department 3"
-      }, "Department 3"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Project"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
-        className: "custom-select",
-        name: "project",
-        id: "project"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        defaultValue: "non"
-      }, "Choose..."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Project 1"
+        value: "project 1"
       }, "Project 1"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Project 2"
+        value: "project 2"
       }, "Project 2"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Project 3"
+        value: "project 3"
       }, "Project 3"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        type: "submit",
+        onClick: this.componentDidMount,
         className: "btn btn-primary"
       }, "Submit")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", {
         className: "table"
@@ -71410,15 +71396,20 @@ var Searching = /*#__PURE__*/function (_Component) {
         scope: "col"
       }, "Department"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
         scope: "col"
-      }, "Project"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null))));
+      }, "Project"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, //allway need to define key to <tr> tag
+      this.state.search.map(function (search, index) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
+          key: index
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, search.emp_name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, search.id), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, search.emp_address), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, search.com_nsme), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, search.dep_name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, search.pro_name));
+      })))));
     }
   }]);
 
   return Searching;
 }(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
 
-
-; // export default Searching;
+;
+/* harmony default export */ __webpack_exports__["default"] = (Searching);
 
 /***/ }),
 

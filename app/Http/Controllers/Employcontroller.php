@@ -50,25 +50,26 @@ class Employcontroller extends Controller
    }
 
 
-   public function index(Request $reques)
+   public function index(Request $request)
    {
 
-      dd($reques);
-
-       $search_val = $reques->get('project');
-       $search_val2 = $reques->get('department');
-       $search_val3 = $reques->get('company');
+       $search_val = $request->get('project');
+       $search_val2 = $request->get('department');
+       $search_val3 = $request->get('company');
        $searach = DB::table('projects')->where('projects.pro_name','like','%'.$search_val.'%')
            ->leftJoin('employe_projects','projects.id','=','employe_projects.projects_id')
            ->leftJoin('employes','employe_projects.employe_id','=','employes.id')
            ->rightJoin('departments','projects.dep_id','=','departments.id')
-           ->orWhere('departments.dep_name','like','%'.$search_val2.'%')
+         //   ->orWhere('departments.dep_name','like','%'.$search_val2.'%')
            ->rightJoin('companies','departments.com_id','=','companies.id')
-           ->orwhere('companies.com_nsme','like','%'.$search_val3.'%')
+         //   ->orwhere('companies.com_nsme','like','%'.$search_val3.'%')
            ->select('projects.pro_name','employes.emp_name','employes.id','companies.com_nsme','departments.dep_name','employes.emp_address')
            ->get();
-         return response()->json($searach);
-         //   dd($searach);
+         
+            return response()->json($searach);
+             
+            //  dd($query);
+           //dd($searach);
           // return view('Display', ['searach'=>$searach]);
 
             //$search_val = $reques->get('company');

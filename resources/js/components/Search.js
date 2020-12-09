@@ -1,89 +1,111 @@
 import React, { Component } from 'react';
 import '../css/app.css';
 import axios from 'axios';
+import { result } from 'lodash';
 
 
-export default class Searching extends Component
+class Searching extends Component
 {
     
-    constructor()
+    constructor(props)
     {
       
-        super();
+        super(props);
 
-        this.onaddDetails = this.onaddDetails.bind(this);
-        this.componentDidMount = this.componentDidMount.bind(this);
+        //this.onaddDetails = this.onaddDetails.bind(this);
+        //this.componentDidMount = this.componentDidMount.bind(this);
         this.state = {
             search:[],
-            company:target.value,
-            department:target.value,
-            project:target.value
+            project:'',
+           
+            
         };
+        
     }
     onaddDetails()
     {
         this.setState({
-            company:target.value,
-            department:target.value,
-            project:target.value
+            companys:target.value,
+            departments:target.value,
+            projects:target.value
         });
     }
 
     componentDidMount()
+    
     {
-        const details ={
-            company : this.state.company,
-            department : this.state.department,
-            project:this.state.project
-        }
-        axios.get('http://127.0.0.1:8000/api/search',details)
-        .then(response=>
-            {
-                this.setState({search:response.data});
-                console.log(response);
+        
+      
+
+        fetch('http://127.0.0.1:8000/api/search')
+        .then(res => res.json())
+        .then(result=>{
+            this.setState({
+               
+                search: result
+                
+                
             });
+        });
+        // const details ={
+        //     company : this.state.companys,
+        //     department : this.state.departments,
+        //     project:this.state.projects
+        // }
+        // axios.get('http://127.0.0.1:8000/api/search',details)
+        // .then(response=>
+        //     {
+        //         this.setState({search:response.data});
+        //         //console.log(response);
+        //     });
     }
    
     render(){
+
+        
+        const {search} = this.state;
+       
     return(
+        
         
        
         <div className="search_forme">
             
             
-            <form className="searching_emp" onSubmit={this.onSubmitserch} method="get">
-            <div>
+            <form className="searching_emp" method="get">
+            {/* <div>
                     <label>Company</label>
-                    <select className="custom-select" name="project" id="project">
+                    <select className="custom-select" name="companys" id="companys">
                      <option defaultValue = "non">Choose...</option>
-                       <option value="Company 1">Company 1</option>
-                       <option value="Company 2">Company 2</option>
-                       <option value="Company 3">Company 3</option>
+                       <option value="company 1">Company 1</option>
+                       <option value="company 2">Company 2</option>
+                       <option value="company 3">Company 3</option>
                    </select>
-            </div>
-            <div>
+            </div> */}
+            {/* <div>
                     <label>Department</label>
-                    <select className="custom-select" name="project" id="project">
+                    <select className="custom-select" name="departments" id="departments">
                     <option defaultValue = "non">Choose...</option>
-                       <option value="Department 1">Department 1</option>
-                       <option value="Department 2">Department 2</option>
-                       <option value="Department 3">Department 3</option>
+                       <option value="department 1">Department 1</option>
+                       <option value="department 2">Department 2</option>
+                       <option value="department 3">Department 3</option>
                    </select>
-            </div>
+            </div> */}
             <div>
                     <label>Project</label>
-                    <select className="custom-select" name="project" id="project">
+                    <select className="custom-select" name="projects" id="projects">
                        <option defaultValue = "non">Choose...</option>
-                       <option value="Project 1">Project 1</option>
-                       <option value="Project 2">Project 2</option>
-                       <option value="Project 3">Project 3</option>
+                       <option value="project 1">Project 1</option>
+                       <option value="project 2">Project 2</option>
+                       <option value="project 3">Project 3</option>
                    </select>
             </div>
-            <button type="submit" className="btn btn-primary" >Submit</button>
+            <button onClick = {this.componentDidMount} className="btn btn-primary" >Submit</button>
         </form>
                 
                
         <div>
+            
             <table className="table">
                     <thead>
                         <tr>
@@ -96,10 +118,12 @@ export default class Searching extends Component
                         </tr>
                     </thead>
                     <tbody>
-                        {/* {
+                       
+                        {
                             //allway need to define key to <tr> tag
-                    
+                                
                             this.state.search.map((search, index) =>{
+                                
                                 return(
                                         <tr key={index}>
                                         <th>{search.emp_name}</th>
@@ -108,14 +132,16 @@ export default class Searching extends Component
                                         <td>{search.com_nsme}</td>
                                         <td>{search.dep_name}</td>
                                         <td>{search.pro_name}</td>
+                                       
                                         </tr>
                                        
                         );
                         })
-                        } */}
+                        }
+                        
                     </tbody>
                     
-</table>
+            </table>
 
         </div>
         
@@ -123,7 +149,9 @@ export default class Searching extends Component
       
         
     );
-}
-};
 
-// export default Searching;
+    
+}
+
+};
+ export default Searching;

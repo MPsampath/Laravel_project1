@@ -9,6 +9,7 @@ class Projects extends Model
 {
     protected $table = 'projects';
     protected $primaryKey = 'id';
+    protected $fillable = ['pro_name'];
     public $incrementing = false;
 
     // public function employ(){

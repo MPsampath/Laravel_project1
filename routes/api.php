@@ -18,6 +18,7 @@ use Illuminate\Support\Facades\Route;
     return $request->user();
 }); 
 
- Route::post('/saveEmploy', 'App\Http\Controllers\Employcontroller@insert');
-Route::get('/search','App\Http\Controllers\Employcontroller@index');
-// Route::getget('');
+Route::post('saveEmploy', 'App\Http\Controllers\Employcontroller@insert');
+Route::get('search','App\Http\Controllers\Employcontroller@index');
+
+ //Route::get('');

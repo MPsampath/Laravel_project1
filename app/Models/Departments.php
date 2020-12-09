@@ -10,5 +10,6 @@ class Departments extends Model
     use HasFactory;
     protected $table = 'departments';
     protected $primaryKey = 'id';
+    protected $fillable = ['dep_name'];
     public $incrementing = false;
 }

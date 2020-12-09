@@ -6,9 +6,6 @@ import {
     Link
 } from 'react-router-dom';
 import ReactDom from 'react-dom';
-
-import Form from './Form';
-import Searching from './Search';
 import Header from './Heder';
 import Footer from './Footer';
 
@@ -19,10 +16,7 @@ const App = ()=>
         <div>
            
                 <Header/>
-                 {/* <Link to= "/">Register</Link>
-                 <Link to= "/Search">Search</Link>
-                <Route exact path ="/" component={Form}/>
-                <Route exact path ="/Search" component={Searching}/>  */}
+
                 <Footer/>
            
             

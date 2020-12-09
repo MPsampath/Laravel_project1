@@ -1,4 +1,4 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+{{-- <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
 <head>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
@@ -12,7 +12,7 @@
 
 <div class="row">
     <div class="col-md-6">
-<form action="/non" method="get">
+<form action="/search" method="get">
 <div class="input-group mb-3">
     <div class="input-group mb-3">
         <div class="input-group-prepend">
@@ -82,4 +82,4 @@
 </div>
 </body>
 </html>
-
+ --}}

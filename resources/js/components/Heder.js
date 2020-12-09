@@ -26,7 +26,7 @@ class Header extends Component
                                 <Link className='nav-link' to="/">Register</Link>
                             </li>
                             <li className="nav-item">
-                                <Link className="nav-link" to="/Search">Search</Link>
+                                <Link className="nav-link" to="/search">Search</Link>
                             </li>
                         
                         </ul>
@@ -34,7 +34,7 @@ class Header extends Component
             </nav>    
         </div>
                 <Route exact path ="/" component={Form}/>
-                <Route exact path ="/Search" component={Searching}/> 
+                <Route exact path ="/search" component={Searching}/> 
     </Router> 
 
     );

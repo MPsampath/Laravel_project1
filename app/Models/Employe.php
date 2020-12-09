@@ -12,7 +12,7 @@ class Employe extends Model
     protected $primaryKey = 'id';
     public $incrementing = false;
 
-    public function projec(){
-        return $this->belongsToMany('\App\Models\Projects')->withPivot('id');
-    }
+    // public function projec(){
+    //     return $this->belongsToMany('\App\Models\Projects')->withPivot('id');
+    // }
 }

@@ -56,7 +56,7 @@
                        <option value="company 2">company 2</option>
                        <option value="company 3">company 3</option>
                    </select>
-               </div>
+               </div> --}}
 {{--               <div class="form-group">--}}
 {{--                   <label for="department">Your Department</label>--}}
 {{--                   <input class="form-control" type="text" name="department" id="department">--}}
@@ -81,7 +81,7 @@
            </form>
        </div>
    </div>
-@endsection
+@endsection --}}
 
 
-  --}}
+ 

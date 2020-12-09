@@ -10,5 +10,5 @@ class Employwithproject extends Model
     protected $table = 'employe_projects';
     protected $primaryKey = 'id';
     public $incrementing = false;
-    use HasFactory;
+   // use HasFactory;
 }

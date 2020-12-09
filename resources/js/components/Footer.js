@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import '../css/app.css';
-import Bootstrap from 'react-bootstrap'
-import '../css/app.css';
 
 
 class Footer extends Component

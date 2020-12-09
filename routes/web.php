@@ -17,6 +17,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/non','App\Http\Controllers\Employcontroller@index');
-//Route::get('')
-Route::view('/display','Display');
+Route::post('/saveEmploy', 'App\Http\Controllers\Employcontroller@insert');
+
+//Route::get('/search','App\Http\Controllers\Employcontroller@index');
+// Route::get('');
+//Route::view('/display','Display');

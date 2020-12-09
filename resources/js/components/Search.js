@@ -1,17 +1,57 @@
 import React, { Component } from 'react';
 import '../css/app.css';
-import Bootstrap from 'react-bootstrap';
+import axios from 'axios';
 
 
-
-class Searching extends Component
+export default class Searching extends Component
 {
+    
+    constructor()
+    {
+      
+        super();
+
+        this.onaddDetails = this.onaddDetails.bind(this);
+        this.componentDidMount = this.componentDidMount.bind(this);
+        this.state = {
+            search:[],
+            company:target.value,
+            department:target.value,
+            project:target.value
+        };
+    }
+    onaddDetails()
+    {
+        this.setState({
+            company:target.value,
+            department:target.value,
+            project:target.value
+        });
+    }
+
+    componentDidMount()
+    {
+        const details ={
+            company : this.state.company,
+            department : this.state.department,
+            project:this.state.project
+        }
+        axios.get('http://127.0.0.1:8000/api/search',details)
+        .then(response=>
+            {
+                this.setState({search:response.data});
+                console.log(response);
+            });
+    }
+   
     render(){
     return(
-
+        
+       
         <div className="search_forme">
             
-            <form className="searching_emp" action="/saveEmploy" method="post">
+            
+            <form className="searching_emp" onSubmit={this.onSubmitserch} method="get">
             <div>
                     <label>Company</label>
                     <select className="custom-select" name="project" id="project">
@@ -39,34 +79,51 @@ class Searching extends Component
                        <option value="Project 3">Project 3</option>
                    </select>
             </div>
-            <button type="submit" className="btn btn-primary">Submit</button>
+            <button type="submit" className="btn btn-primary" >Submit</button>
         </form>
                 
+               
         <div>
             <table className="table">
                     <thead>
                         <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">First</th>
-                        <th scope="col">Last</th>
-                        <th scope="col">Handle</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Id</th>
+                        <th scope="col">Address</th>
+                        <th scope="col">Company</th>
+                        <th scope="col">Department</th>
+                        <th scope="col">Project</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                        </tr>
-                        
+                        {/* {
+                            //allway need to define key to <tr> tag
+                    
+                            this.state.search.map((search, index) =>{
+                                return(
+                                        <tr key={index}>
+                                        <th>{search.emp_name}</th>
+                                        <td>{search.id}</td>
+                                        <td>{search.emp_address}</td>
+                                        <td>{search.com_nsme}</td>
+                                        <td>{search.dep_name}</td>
+                                        <td>{search.pro_name}</td>
+                                        </tr>
+                                       
+                        );
+                        })
+                        } */}
                     </tbody>
+                    
 </table>
 
         </div>
-        </div>
+        
+         </div>
+      
+        
     );
 }
 };
 
-export default Searching;
+// export default Searching;

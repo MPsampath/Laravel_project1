@@ -16,14 +16,15 @@ use function GuzzleHttp\Promise\all;
 class Employcontroller extends Controller
 {
    public function insert(Request $request){
-      dd($request->all());
+     
+      //dd($request->all());
        $employ = new Employe();
        $department = new Departments();
        $project = new Projects();
        $company = new Company();
        $employproject = new Employwithproject();
 
-
+   
        $company->com_nsme =$request->company;
        $company->save();
        $comid = DB::getPdo()->lastInsertId();
@@ -42,8 +43,8 @@ class Employcontroller extends Controller
        $employproject->employe_id=$empid;
        $employproject->projects_id=$proid;
        $employproject->save();
-
-     return view('Heder');
+       
+      //return view('Heder');
 
 
    }
@@ -52,7 +53,7 @@ class Employcontroller extends Controller
    public function index(Request $reques)
    {
 
-
+      dd($reques);
 
        $search_val = $reques->get('project');
        $search_val2 = $reques->get('department');
@@ -66,8 +67,9 @@ class Employcontroller extends Controller
            ->orwhere('companies.com_nsme','like','%'.$search_val3.'%')
            ->select('projects.pro_name','employes.emp_name','employes.id','companies.com_nsme','departments.dep_name','employes.emp_address')
            ->get();
-           dd($searach);
-            return view('Display', ['searach'=>$searach]);
+         return response()->json($searach);
+         //   dd($searach);
+          // return view('Display', ['searach'=>$searach]);
 
             //$search_val = $reques->get('company');
    }

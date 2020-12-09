@@ -11,7 +11,7 @@ class Projects extends Model
     protected $primaryKey = 'id';
     public $incrementing = false;
 
-    public function employ(){
-        //return $this->belongsToMany(Employe::all())->withPivot('id');
-    }
+    // public function employ(){
+    //     //return $this->belongsToMany(Employe::all())->withPivot('id');
+    // }
 }
